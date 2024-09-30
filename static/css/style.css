@@ -1,94 +1,186 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif; /* Use a modern Google Font */
     margin: 0;
     padding: 20px;
-    background: #f4f4f4;
+    background: #f0f2f5; /* Softer background color */
 }
 
 .voice-changer {
     background: white;
     width: 100%;
-    max-width: 600px;
+    max-width: 700px; /* Increased max-width for a bigger box */
     margin: 0 auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    height: auto; /* Changed to auto for flexible height */
+    padding: 30px; /* Increased padding */
+    border-radius: 16px; /* More rounded corners */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* Deeper shadow for container */
+    transition: transform 0.3s ease; /* Smooth transition effect */
+}
+
+.voice-changer:hover {
+    transform: scale(1.02); /* Slight scale on hover */
 }
 
 .tabs {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* Increased margin for more spacing */
+    border-bottom: 2px solid #ddd;
+    justify-content: center; /* Center tabs */
 }
 
 .tab {
     flex: 1;
     text-align: center;
-    padding: 10px;
+    padding: 14px;
     cursor: pointer;
-    background: #eee;
+    background: #fafafa;
     border: none;
     outline: none;
+    font-size: 18px; /* Slightly larger font */
+    transition: background 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+    border-radius: 12px 12px 0 0; /* More rounded top corners */
+}
+
+.tab:hover {
+    background: #f0f0f0; /* Slight hover effect */
+    color: #007BFF; /* Change text color on hover */
 }
 
 .tab.active {
-    background: #ddd;
+    background: #e1e1e1; /* Slightly darker for active tab */
+    font-weight: bold; /* Bold font for active tab */
+    color: #007BFF; /* Active tab text color */
 }
 
 .content {
     background: #fff;
+    padding: 20px;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
 }
 
 .file-input {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .file-details {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    background: #fafafa;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
 }
 
 .play-btn {
-    background: none;
+    background: #4CAF50; /* Green for play button */
+    color: white;
     border: none;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
+    padding: 10px 14px;
+    transition: background 0.3s ease;
+}
+
+.play-btn:hover {
+    background: #45a049; /* Darker green on hover */
 }
 
 .actions {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* Increased margin for better spacing */
+}
+
+.generate-title {
+    font-size: 24px; /* Adjust size for title */
+    font-weight: bold;
+    color: #333;
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Space below the title */
 }
 
 .generate-btn {
-    padding: 10px 20px;
-    background: blue;
+    padding: 14px 30px; /* Larger padding for better clickability */
+    background: #007BFF; /* Blue primary button */
     color: white;
     border: none;
+    border-radius: 10px; /* More rounded corners for button */
     cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth background change and slight transform */
+    font-size: 16px;
+    box-shadow: 0 5px 10px rgba(0, 123, 255, 0.2); /* Button shadow */
+}
+
+.generate-btn:hover {
+    background: #0056b3; /* Darker blue on hover */
+    transform: scale(1.03); /* Slight scale on hover */
 }
 
 .quota {
     font-size: 14px;
+    color: #666;
 }
 
 select {
-    padding: 5px;
-    margin-right: 10px;
+    padding: 10px; /* Increased padding for dropdown */
+    margin-right: 12px;
+    border-radius: 6px; /* Rounded corners for dropdown */
+    border: 1px solid #ddd;
+    font-size: 14px;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transition for dropdown */
+}
+
+select:hover {
+    border-color: #007BFF; /* Blue border on hover */
+}
+
+select:focus {
+    background-color: #f0f8ff; /* Light blue background when focused */
 }
 
 .record-btn {
-    padding: 10px 15px;
-    margin-right: 10px;
-    background: #ff6666;
+    padding: 14px 24px; /* Increased padding for button */
+    margin-right: 12px;
+    background: #ff5252; /* Brighter red */
     border: none;
     color: white;
+    border-radius: 10px; /* Rounded button */
     cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth background and transform on hover */
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(255, 82, 82, 0.2); /* Slight shadow for record button */
+}
+
+.record-btn:hover {
+    background: #ff1744; /* Darker red on hover */
+    transform: scale(1.03); /* Slight scale on hover */
 }
 
 .record-btn:disabled {
     background: #ccc;
     cursor: default;
+}
+
+/* Additional hover and focus effects */
+input[type="file"] {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+input[type="file"]:hover {
+    border-color: #aaa;
+}
+
+input[type="file"]:focus {
+    border-color: #007BFF; /* Blue border on focus */
 }
