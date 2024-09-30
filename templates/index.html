@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Voice Changer</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Changer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 <div class="voice-changer">
     <div class="tabs">
-        <button class="tab active">Generate</button>
+        <h2 class="tab-title">Generate</h2> <!-- Changed button to title -->
         <!-- <button class="tab">History</button> -->
     </div>
     <div class="content">
@@ -23,7 +23,6 @@
             <button id="playBtn" class="play-btn" disabled>Play</button>
             <audio id="audioPlayer" src="" hidden></audio>
         </div>
-
 
         <div class="file-details">
             <button id="startBtn" class="record-btn">Start Recording</button>
@@ -41,7 +40,7 @@
             </select>
             <img src="{{ url_for('static', filename='images/loading.gif') }}" id="loadingImage" style="display: none; width: 20px; height: 20px; vertical-align: middle;" alt="Loading...">
 
-            <button class="generate-btn" >Generate Speech</button>
+            <button class="generate-btn">Generate Speech</button>
         </div>
         
     </div>
