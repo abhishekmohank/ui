@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Changer</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="voice-changer">
+    <div class="tabs">
+        <button class="tab active">Generate</button>
+        <!-- <button class="tab">History</button> -->
+    </div>
+    <div class="content">
+        <div class="file-input">
+            <input type="file" id="audioFile" accept="audio/*">
+            <label for="audioFile">Upload your file</label>
+        </div>
+
+        <div class="file-details">
+            <span id="audioDetails">No recording</span>
+            <button id="playBtn" class="play-btn" disabled>Play</button>
+            <audio id="audioPlayer" src="" hidden></audio>
+        </div>
+
+
+        <div class="file-details">
+            <button id="startBtn" class="record-btn">Start Recording</button>
+            <button id="stopBtn" class="record-btn" disabled>Stop Recording</button>
+            <span id="recordStatus">Not recording</span>
+            <span id="timer">00:00</span>
+        </div>
+        
+        <div class="actions">
+            <select id="voiceSelect">
+                <option>Mohanlal</option>
+                <option>Latina_egirl</option>
+                <option>Taylor_Swift</option>
+                <option>Melissa</option>    
+            </select>
+            <img src="{{ url_for('static', filename='images/loading.gif') }}" id="loadingImage" style="display: none; width: 20px; height: 20px; vertical-align: middle;" alt="Loading...">
+
+            <button class="generate-btn" >Generate Speech</button>
+        </div>
+        
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f4f4f4;
+}
+
+.voice-changer {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    background: #eee;
+    border: none;
+    outline: none;
+}
+
+.tab.active {
+    background: #ddd;
+}
+
+.content {
+    background: #fff;
+}
+
+.file-input {
+    margin-bottom: 20px;
+}
+
+.file-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.play-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.generate-btn {
+    padding: 10px 20px;
+    background: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.quota {
+    font-size: 14px;
+}
+
+select {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.record-btn {
+    padding: 10px 15px;
+    margin-right: 10px;
+    background: #ff6666;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.record-btn:disabled {
+    background: #ccc;
+    cursor: default;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Voice Packs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Available Voice Packs</h1>
+        <p class="description">Listen to different AI voices perform Derek Clegg's song "Leave Reminders".</p>
+
+        <div class="voice-grid">
+            <div class="voice-item">
+                <div class="voice-image">
+                    <button class="play-button"></button>
+                </div>
+                <p class="voice-name">Inspired by</p>
+                <p class="voice-inspired">21 Savage</p>
+            </div>
+
+            <div class="voice-item">
+                <div class="voice-image">
+                    <button class="play-button"></button>
+                </div>
+                <p class="voice-name">Inspired by</p>
+                <p class="voice-inspired">Bad Bunny</p>
+            </div>
+
+            <div class="voice-item">
+                <div class="voice-image">
+                    <button class="play-button"></button>
+                </div>
+                <p class="voice-name">Inspired by</p>
+                <p class="voice-inspired">Drake</p>
+            </div>
+
+            <div class="voice-item">
+                <div class="voice-image">
+                    <button class="play-button"></button>
+                </div>
+                <p class="voice-name">Inspired by</p>
+                <p class="voice-inspired">Kanye West</p>
+            </div>
+
+        </div>
+
+        <div class="audio-input">
+            <button class="btn" id="recordButton" onclick="toggleRecording()">Record</button>
+            <div class="audio-controls">
+                <button class="btn" onclick="playAudio()">Play</button>
+                <div class="audio-bar">
+                    <div class="progress"></div>
+                </div>
+                <button class="btn" onclick="uploadAudio()">Upload Audio</button>
+                <button class="btn" onclick="deleteAudio()">Delete</button>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        
+    </div>
+
+    <script>
+        // Select all play buttons
+        const playButtons = document.querySelectorAll('.play-button');
+        let currentPlaying = null;
+
+        playButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.voice-item').forEach(item => {
+                    item.classList.remove('ring-active');
+                    item.querySelector('.play-button').classList.remove('pause-button');
+                });
+                const parent = button.closest('.voice-item');
+                if (currentPlaying === button) {
+                    currentPlaying = null;
+                    return;
+                }
+                currentPlaying = button;
+                parent.classList.add('ring-active');
+                button.classList.add('pause-button');
+            });
+        });
+
+    </script>
+    <script src="main.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#predictButton').click(function(){
+                $.ajax({
+                    url: '/predict',
+                    type: 'POST',
+                    success: function(data) {
+                        $('#result').html(JSON.stringify(data));
+                    },
+                    error: function(xhr) {
+                        $('#result').html('Error: ' + xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Python Function Trigger</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="predictButton">Run Prediction</button>
+    <div id="result"></div>
+
+    <script>
+    $(document).ready(function(){
+        $('#predictButton').click(function(){
+            $.post('/predict', function(data){
+                $('#result').html(JSON.stringify(data));
+            }).fail(function(response){
+                $('#result').html('Error: ' + response.responseText);
+            });
+        });
+    });
+    </script>
+</body>
+</html>

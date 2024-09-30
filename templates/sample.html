@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Voice Packs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Available Voice Packs</h1>
+        <p class="description">Listen to yourself as different AI voices</p>
+                
+        <div class="voice-grid">
+            <div class="voice-item">
+                <!-- <div class="voice-image">
+                    <button class="play-button" onclick="playconvAudio()"></button>
+                </div> -->
+                <p class="voice-name">Speak As</p>
+                <p class="voice-inspired">Mohanlal</p>
+                
+    
+                <!-- Audio Player -->
+                <audio id="audio-player" controls>
+                    <source id="audio-source">
+                    Your browser does not support the audio element.
+                </audio>
+                <br><br>
+                
+                <!-- Button to Play Converted Audio -->
+                <button id="recordButton" onclick="playconvAudio()">Play</button>
+            </div>
+
+        </div>
+
+        <div class="audio-input">
+            <button class="btn" id="recordButton" onclick="toggleRecording()">Record</button>
+            <div class="audio-controls">
+                <button class="btn" onclick="playAudio()">Play</button>
+                <div class="audio-bar">
+                    <div class="progress"></div>
+                </div>
+                <button class="btn" onclick="uploadAudio()">Upload Audio</button>
+                <button class="btn" onclick="deleteAudio()">Delete</button>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        
+    </div>
+
+    <script>
+        // Select all play buttons
+        const playButtons = document.querySelectorAll('.play-button');
+        let currentPlaying = null;
+
+        playButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.voice-item').forEach(item => {
+                    item.classList.remove('ring-active');
+                    item.querySelector('.play-button').classList.remove('pause-button');
+                });
+                const parent = button.closest('.voice-item');
+                if (currentPlaying === button) {
+                    currentPlaying = null;
+                    return;
+                }
+                currentPlaying = button;
+                parent.classList.add('ring-active');
+                button.classList.add('pause-button');
+            });
+        });
+
+    </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('#predictButton').click(function(){
+                $.ajax({
+                    url: '/predict',
+                    type: 'POST',
+                    success: function(data) {
+                        $('#result').html(JSON.stringify(data));
+                    },
+                    error: function(xhr) {
+                        $('#result').html('Error: ' + xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
